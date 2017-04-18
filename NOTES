@@ -1,0 +1,46 @@
+alert:
+ - severity
+   - info (an actionable but non urgent thing. even wanted, is this just logs?)
+   - warn (you need to fix this, but tomorrow is fine)
+   - crit (Dear Sir/Madam, I am writing to inform you of a fire which has broken out at the premises of...)
+ - tags
+ - summary
+ - notes
+
+service:
+ - name
+ - handler (perl class)
+ - service-specific config (hostnames, API keys, etc)
+
+user:
+ - name
+ - services
+   - name
+   - number/token ("to")
+   - severity
+ - wake times
+
+group:
+ - name
+ - users in group
+
+route:
+ - tags (or *)
+ - group 
+
+
+endpoints:
+/alert   - send an alert
+/ack     - no more alerts for group? tags? sev? for N mins/forever?
+/alerts  - list of outstanding alerts
+/metrics - :)
+
+
+dunno yet:
+- does this need to store anything? ideally not
+- can we collapse (and ack!) by hash of tags, groups, etc? or do we need to deal with every alert?
+- fallback:
+ - a "default" group?
+ - ignore wake times if we can't find anyone?
+ - page everyone if we can't find anyone?
+   - maybe do that at boot, or reject config that would not cover a period?

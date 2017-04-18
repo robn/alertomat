@@ -1,0 +1,8 @@
+[service.email]
+handler = "SMTP"
+from = "alertomat@example.com"
+# Email::Sender::Transport::SMTP args: host, ssl, port, sasl_username, sasl_password
+host = "smtp.fastmail.com"
+ssl = "ssl"
+sasl_username = "robntest@fastmail.fm"
+sasl_password = "XXX"
